@@ -23,13 +23,11 @@ const creditStyle: CSSProperties = {
     color: "yellow",
 }
 
-const ImageWithCredit: FC<ImageWithCreditProps> = ({ file, artistName, artistLink }) => {
-    return (
-        <div style={boxStyle}>
-            <div style={imageStyle}>{file}</div>
-            <a href={artistLink} style={creditStyle}>{artistName}</a>
-        </div>
-    )
-}
+const ImageWithCredit: FC<ImageWithCreditProps> = ({ file, artistName, artistLink }) => (
+    <div style={boxStyle}>
+        <div style={imageStyle}>{file}</div>
+        <a href={artistLink} style={creditStyle}>{artistName}</a>
+    </div>
+)
 
 export default ImageWithCredit

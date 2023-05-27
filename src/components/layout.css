@@ -1,0 +1,4 @@
+* {
+    /* TODO is there a better way to overwrite the z-index from global.css? */
+    z-index: 1
+}

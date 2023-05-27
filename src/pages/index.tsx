@@ -2,6 +2,7 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import ImageWithCredit, { ImageWithCreditProps } from "../components/ImageWithCredit"
 import { CSSProperties } from "react"
+import Layout from "../components/layout"
 
 const pageStyles: CSSProperties = {
   color: "#232129",
@@ -49,16 +50,18 @@ const images: Array<ImageWithCreditProps> = [
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Cirina Q(ualli)'tea</h1>
-      <h2>Steppe Warrior</h2>
+    <Layout>
+      <main style={pageStyles}>
+        <h1 style={headingStyles}>Cirina Q(ualli)'tea</h1>
+        <h2>Steppe Warrior</h2>
 
-      <div style={imageListStyle}>
-        {images.map(image => (
-          <ImageWithCredit file={image.file} artistName={image.artistName} artistLink={image.artistLink}></ImageWithCredit>
-        ))}
-      </div>
-    </main>
+        <div style={imageListStyle}>
+          {images.map(image => (
+            <ImageWithCredit file={image.file} artistName={image.artistName} artistLink={image.artistLink}></ImageWithCredit>
+          ))}
+        </div>
+      </main>
+    </Layout>
   )
 }
 
