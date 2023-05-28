@@ -26,7 +26,7 @@ const creditStyle: CSSProperties = {
 const ImageWithCredit: FC<ImageWithCreditProps> = ({ file, artistName, artistLink }) => (
     <div style={boxStyle}>
         <div style={imageStyle}>{file}</div>
-        <a href={artistLink} style={creditStyle}>{artistName}</a>
+        <span style={creditStyle}>by <a href={artistLink} style={{ color: 'inherit' }}>{artistName}</a></span>
     </div>
 )
 

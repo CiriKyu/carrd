@@ -86,4 +86,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Cirina Q'tea</title>
+export { Head } from "../components/layout"
