@@ -8,13 +8,23 @@
     --viewport-height: 100vh;
 }
 
+h1,
+h2 {
+    margin: 0;
+    font-weight: normal;
+}
+
 body {
-    line-height: 1.0;
+    margin: 0;
+
     min-height: var(--viewport-height);
     min-width: 320px;
     overflow-x: hidden;
     word-wrap: break-word;
-    background-color: #000000;
+
+    line-height: 1.5;
+    background-color: black;
+    color: white;
 }
 
 body:before {

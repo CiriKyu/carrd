@@ -20,7 +20,7 @@ const imageStyle: CSSProperties = {
 const creditStyle: CSSProperties = {
     display: "block",
     textAlign: "right",
-    color: "yellow",
+    color: "#7F6500",
 }
 
 const ImageWithCredit: FC<ImageWithCreditProps> = ({ file, artistName, artistLink }) => (

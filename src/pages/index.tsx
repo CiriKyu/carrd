@@ -5,19 +5,34 @@ import { CSSProperties } from "react"
 import Layout from "../components/layout"
 
 const pageStyles: CSSProperties = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
+  "--component-gap": "1.5rem",
+
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  fontFamily: "'Alegreya Sans', sans-serif",
+}
+const innerStyles: CSSProperties = {
+  width: "32.5rem",
+  maxWidth: "100%",
+  padding: "3rem",
 }
 const headingStyles: CSSProperties = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
+  fontFamily: "'Poiret One', sans-serif",
+  textAlign: "center",
+  marginBottom: "var(--component-gap)"
+}
+const mainHeadingStyles: CSSProperties = {
+  fontSize: "2.7rem",
+}
+const subHeadingStyles: CSSProperties = {
+  fontSize: "1.625rem",
 }
 const imageListStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  gap: "1em",
+  gap: "var(--component-gap)",
 }
 
 const images: Array<ImageWithCreditProps> = [
@@ -52,13 +67,17 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <main style={pageStyles}>
-        <h1 style={headingStyles}>Cirina Q(ualli)'tea</h1>
-        <h2>Steppe Warrior</h2>
+        <div style={innerStyles}>
+          <div style={headingStyles}>
+            <h1 style={mainHeadingStyles}>Cirina Q(ualli)'tea</h1>
+            <h2 style={subHeadingStyles}>~ Steppe Warrior ~</h2>
+          </div>
 
-        <div style={imageListStyle}>
-          {images.map(image => (
-            <ImageWithCredit file={image.file} artistName={image.artistName} artistLink={image.artistLink}></ImageWithCredit>
-          ))}
+          <div style={imageListStyle}>
+            {images.map(image => (
+              <ImageWithCredit file={image.file} artistName={image.artistName} artistLink={image.artistLink}></ImageWithCredit>
+            ))}
+          </div>
         </div>
       </main>
     </Layout>

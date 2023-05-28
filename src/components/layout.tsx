@@ -6,6 +6,6 @@ interface LayoutProps {
     children: ReactNode
 }
 
-const Layout: FC<LayoutProps> = ({ children }) => <div id="layout">{children}</div>
+const Layout: FC<LayoutProps> = ({ children }) => <div id="wrapper">{children}</div>
 
 export default Layout 
