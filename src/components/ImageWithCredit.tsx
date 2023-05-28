@@ -1,11 +1,8 @@
 import * as React from 'react'
-import { CSSProperties } from 'react'
-import { type FC } from 'react'
+import { CSSProperties, type FC } from 'react'
 
-export interface ImageWithCreditProps {
-    file: string
-    artistName: string
-    artistLink: string
+interface Props {
+    data: Queries.CommissionsYaml
 }
 
 const boxStyle: CSSProperties = {
@@ -23,10 +20,11 @@ const creditStyle: CSSProperties = {
     color: "#7F6500",
 }
 
-const ImageWithCredit: FC<ImageWithCreditProps> = ({ file, artistName, artistLink }) => (
+const ImageWithCredit: FC<Props> = ({ data }) => (
     <div style={boxStyle}>
-        <div style={imageStyle}>{file}</div>
-        <span style={creditStyle}>by <a href={artistLink} style={{ color: 'inherit' }}>{artistName}</a></span>
+        {/* <GatsbyImage image={ } /> */}
+        <div style={imageStyle}>{data.file}</div>
+        <span style={creditStyle}>by <a href={data.artistUrl!} style={{ color: 'inherit' }}>{data.artistName}</a></span>
     </div>
 )
 

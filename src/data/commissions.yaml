@@ -1,0 +1,15 @@
+- file: ../images/icon.png
+  artistName: "@test1"
+  artistUrl: https://test
+- file: ../images/icon.png
+  artistName: "@test2"
+  artistUrl: https://test
+- file: test.png
+  artistName: "@test3"
+  artistUrl: https://test
+- file: ../images/icon.png
+  artistName: "@test4"
+  artistUrl: https://test
+- file: ../images/icon.png
+  artistName: "@test5"
+  artistUrl: https://test

@@ -1,7 +1,6 @@
-import React, { ReactNode } from "react"
-import "./layout.css"
-import { FC } from "react"
 import { HeadFC, graphql, useStaticQuery } from "gatsby"
+import React, { FC, ReactNode } from "react"
+import "./layout.css"
 
 interface LayoutProps {
     children: ReactNode
@@ -12,16 +11,22 @@ const Layout: FC<LayoutProps> = ({ children }) => <div id="wrapper">{children}</
 export default Layout
 
 export const Head: HeadFC = () => {
-    const data = useStaticQuery(graphql`
-    query{site{siteMetadata{
-        title
-        description
-    }}}`)
+    const query: Queries.Query = useStaticQuery(graphql`
+        query {
+            site {
+                siteMetadata {
+                    title
+                    description
+                }
+            }
+        }
+    `)
+    const { title, description } = query.site!.siteMetadata!
 
     return (
         <>
-            <title>{data.site.siteMetadata.title}</title>
-            <meta name="description" content={data.site.siteMetadata.description} />
+            <title>{title}</title>
+            <meta name="description" content={description!} />
         </>
     )
 }

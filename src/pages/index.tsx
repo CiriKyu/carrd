@@ -1,7 +1,7 @@
+import { PageProps, graphql, useStaticQuery } from "gatsby"
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
-import ImageWithCredit, { ImageWithCreditProps } from "../components/ImageWithCredit"
-import { CSSProperties } from "react"
+import { CSSProperties, FC } from "react"
+import ImageWithCredit from "../components/ImageWithCredit"
 import Layout from "../components/layout"
 
 const pageStyles: CSSProperties = {
@@ -35,35 +35,21 @@ const imageListStyle: CSSProperties = {
   gap: "var(--component-gap)",
 }
 
-const images: Array<ImageWithCreditProps> = [
-  {
-    file: "test.jpg",
-    artistName: "@test",
-    artistLink: "https://test",
-  },
-  {
-    file: "test.jpg",
-    artistName: "@test",
-    artistLink: "https://test",
-  },
-  {
-    file: "test.jpg",
-    artistName: "@test",
-    artistLink: "https://test",
-  },
-  {
-    file: "test.jpg",
-    artistName: "@test",
-    artistLink: "https://test",
-  },
-  {
-    file: "test.jpg",
-    artistName: "@test",
-    artistLink: "https://test",
-  },
-]
+const IndexPage: FC<PageProps> = () => {
+  const query: Queries.Query = useStaticQuery(graphql`
+    query {
+      allCommissionsYaml {
+        edges {
+          node {
+            file
+            artistName
+            artistUrl
+          }
+        }
+      }
+    }
+  `)
 
-const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <main style={pageStyles}>
@@ -74,8 +60,8 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
 
           <div style={imageListStyle}>
-            {images.map(image => (
-              <ImageWithCredit file={image.file} artistName={image.artistName} artistLink={image.artistLink}></ImageWithCredit>
+            {query.allCommissionsYaml.edges.map(comm => (
+              <ImageWithCredit data={comm.node}></ImageWithCredit>
             ))}
           </div>
         </div>
