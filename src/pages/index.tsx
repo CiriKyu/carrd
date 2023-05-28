@@ -32,6 +32,7 @@ const subHeadingStyles: CSSProperties = {
 const imageListStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
   gap: "var(--component-gap)",
 }
 
@@ -39,12 +40,18 @@ const IndexPage: FC<PageProps> = () => {
   const query: Queries.Query = useStaticQuery(graphql`
     query {
       allCommissionsYaml {
-        edges {
-          node {
-            file
-            artistName
-            artistUrl
+        nodes {
+          file {
+            childImageSharp {
+              gatsbyImageData(
+                # width: 200
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
           }
+          artistName
+          artistUrl
         }
       }
     }
@@ -60,9 +67,13 @@ const IndexPage: FC<PageProps> = () => {
           </div>
 
           <div style={imageListStyle}>
-            {query.allCommissionsYaml.edges.map(comm => (
-              <ImageWithCredit data={comm.node}></ImageWithCredit>
-            ))}
+            {query.allCommissionsYaml.nodes.map((comm, index) => {
+              // load the first two images eagerly
+              const loading = index < 2 ? "eager" : "lazy"
+              return (
+                <ImageWithCredit data={comm} loading={loading}></ImageWithCredit>
+              )
+            })}
           </div>
         </div>
       </main>

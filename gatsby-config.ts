@@ -18,6 +18,15 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        // images need to be linked so gatsby can resolve them in yaml
+        name: "images",
+        path: "./src/images/",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "data",
         path: "./src/data/",
       },
     },

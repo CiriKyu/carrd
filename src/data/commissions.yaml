@@ -4,7 +4,7 @@
 - file: ../images/icon.png
   artistName: "@test2"
   artistUrl: https://test
-- file: test.png
+- file: ../images/icon.png
   artistName: "@test3"
   artistUrl: https://test
 - file: ../images/icon.png
