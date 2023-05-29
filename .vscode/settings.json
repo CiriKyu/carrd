@@ -1,0 +1,17 @@
+{
+    "editor.formatOnSave": true,
+    "standard.enable": true,
+    "standard.engine": "ts-standard",
+    "standard.autoFixOnSave": true,
+    "standard.run": "onType",
+    "standard.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        {
+            "language": "html",
+            "autoFix": true
+        }
+    ]
+}

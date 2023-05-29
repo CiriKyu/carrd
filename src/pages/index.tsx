@@ -1,9 +1,9 @@
-import { PageProps, graphql, useStaticQuery } from "gatsby"
-import * as React from "react"
-import { FC } from "react"
-import ImageWithCredit from "../components/image-with-credit"
-import Layout from "../components/layout"
-import "./index.css"
+import { PageProps, graphql, useStaticQuery } from 'gatsby'
+import * as React from 'react'
+import { FC } from 'react'
+import ImageWithCredit from '../components/image-with-credit'
+import Layout from '../components/layout'
+import './index.css'
 
 const IndexPage: FC<PageProps> = () => {
   const query: Queries.Query = useStaticQuery(graphql`
@@ -35,19 +35,19 @@ const IndexPage: FC<PageProps> = () => {
 
   return (
     <Layout>
-      <main className="page">
-        <div className="inner">
-          <div className="header">
+      <main className='page'>
+        <div className='inner'>
+          <div className='header'>
             <h1>Cirina Q(ualli)'tea</h1>
             <h2>~ Steppe Warrior ~</h2>
           </div>
 
-          <div className="image-list">
+          <div className='image-list'>
             {query.allCommissionsYaml.nodes.map((comm, index) => {
               // load the first two images eagerly
-              const loading = index < 2 ? "eager" : "lazy"
+              const loading = index < 2 ? 'eager' : 'lazy'
               return (
-                <ImageWithCredit key={comm.id} data={comm} loading={loading}></ImageWithCredit>
+                <ImageWithCredit key={comm.id} data={comm} loading={loading} />
               )
             })}
           </div>
@@ -59,4 +59,4 @@ const IndexPage: FC<PageProps> = () => {
 
 export default IndexPage
 
-export { Head } from "../components/layout"
+export { Head } from '../components/layout'

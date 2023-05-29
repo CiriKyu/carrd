@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "redhat.vscode-yaml",
+        "standard.vscode-standard",
+        "zacklittke-smith.reactcssautocomplete",
+        "ionutvmi.path-autocomplete",
+        "editorconfig.editorconfig",
+        "graphql.vscode-graphql"
+    ]
+}
