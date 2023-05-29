@@ -25,6 +25,7 @@ export const Head: HeadFC = () => {
 
     return (
         <>
+            <html lang="en" />
             <title>{title}</title>
             <meta name="description" content={description!} />
         </>

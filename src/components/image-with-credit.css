@@ -1,0 +1,22 @@
+.image-box {
+    display: block;
+    background: black;
+}
+
+.image-main video {
+    display: block;
+    /* constrain the video to the parent div */
+    max-width: 100%;
+    height: auto;
+}
+
+.image-credit {
+    display: block;
+    width: 100%;
+    text-align: right;
+    color: #7F6500;
+}
+
+.image-credit a {
+    color: inherit;
+}
