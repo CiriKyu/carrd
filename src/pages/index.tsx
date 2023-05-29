@@ -53,6 +53,9 @@ const IndexPage: FC<PageProps> = () => {
           }
           artistName
           artistUrl
+          poster {
+            publicURL
+          }
         }
       }
     }

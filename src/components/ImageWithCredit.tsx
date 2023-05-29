@@ -16,6 +16,13 @@ const boxStyle: CSSProperties = {
 const imageStyle: CSSProperties = {
 }
 
+const videoStyles: CSSProperties = {
+    display: "block",
+    // constrain the video to the parent div
+    maxWidth: "100%",
+    height: "auto",
+}
+
 const creditStyle: CSSProperties = {
     display: "inline-block",
     width: "100%",
@@ -31,8 +38,9 @@ const ImageWithCredit: FC<Props> = ({ data, loading }) => {
     if (path.endsWith(".gif")) {
         artworkComp = <img src={path} alt={altText} loading={loading} />
     } else if (path.endsWith(".mp4")) {
-        // TODO poster image
-        artworkComp = <video controls muted preload="none" width="100%" height="100%">
+        // specify size of the video so the poster gets stretched to "max-width"
+        // if we ever have different video resolutions we should read this from the query
+        artworkComp = <video controls muted preload="none" poster={data.poster?.publicURL} width="1920" height="1080" style={videoStyles}>
             <source src={path} type="video/mp4" />
         </video>
     } else {
