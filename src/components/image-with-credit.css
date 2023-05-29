@@ -14,7 +14,14 @@
     display: block;
     width: 100%;
     text-align: right;
-    color: #7F6500;
+    color: #756300;
+
+    transition: color .5s;
+}
+
+.image-credit:hover,
+.image-credit:focus-within {
+    color: #B39800;
 }
 
 .image-credit a {
