@@ -24,12 +24,26 @@ const creditStyle: CSSProperties = {
 }
 
 const ImageWithCredit: FC<Props> = ({ data, loading }) => {
-    const image: IGatsbyImageData = getImage(data.file!)!
+    const altText = `Artwork by ${data.artistName}`
+    const path = data.file?.publicURL!
+
+    let artworkComp
+    if (path.endsWith(".gif")) {
+        artworkComp = <img src={path} alt={altText} loading={loading} />
+    } else if (path.endsWith(".mp4")) {
+        // TODO poster image
+        artworkComp = <video controls muted preload="none" width="100%" height="100%">
+            <source src={path} type="video/mp4" />
+        </video>
+    } else {
+        const image: IGatsbyImageData = getImage(data.file!)!
+        artworkComp = <GatsbyImage image={image} loading={loading} alt={altText} />
+    }
 
     return (
         <div style={boxStyle}>
             <div style={imageStyle}>
-                <GatsbyImage image={image} loading={loading} alt={"Artwork by " + data.artistName} />
+                {artworkComp}
             </div>
             <span style={creditStyle}>by <a href={data.artistUrl!} style={{ color: 'inherit' }}>{data.artistName}</a></span>
         </div>

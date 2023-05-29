@@ -42,6 +42,7 @@ const IndexPage: FC<PageProps> = () => {
       allCommissionsYaml {
         nodes {
           file {
+            publicURL
             childImageSharp {
               gatsbyImageData(
                 # width: 200
