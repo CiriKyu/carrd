@@ -9,8 +9,8 @@ interface Props {
 }
 
 const ImageWithCredit: FC<Props> = ({ data, loading }) => {
-  const altText = `Artwork by ${data.artistName ?? 'ERROR'}`
-  const path = data.file?.publicURL
+  const altText = `Artwork by ${data.artistName as string ?? 'ERROR'}`
+  const path = data.file?.publicURL as string ?? 'ERROR'
 
   let artworkComp
   if (path.endsWith('.gif')) {
