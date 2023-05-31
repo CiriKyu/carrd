@@ -48,8 +48,8 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: gatsby
-          # change to .ts since default is .js
-          generator_config_file: ./gatsby-config.ts
+          # change to .mjs since default is .js and .ts is not supported
+          generator_config_file: ./gatsby-config.mjs
       - name: Restore cache
         uses: actions/cache@v3
         with:

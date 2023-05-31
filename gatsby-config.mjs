@@ -1,6 +1,4 @@
-import type { GatsbyConfig } from 'gatsby'
-
-const config: GatsbyConfig = {
+const config = {
   siteMetadata: {
     title: "Cirina Q'tea",
     description: 'Steppe Warrior',
