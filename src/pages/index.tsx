@@ -17,9 +17,10 @@ const IndexPage: FC<PageProps> = () => {
               gatsbyImageData(
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                # 520 is the maximum container width, constrained generates smaller sizes
                 layout: CONSTRAINED
-                width: 520
+                # set to width of the inner container
+                sizes: "(min-width: 32.5rem) 32.5rem, 100vw"
+                outputPixelDensities: [0.25, 0.5, 0.7, 1, 2]
               )
             }
           }
