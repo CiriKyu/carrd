@@ -1,11 +1,9 @@
 .page {
-    --component-gap: 1.5rem;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: var(--text-font);
 }
 
 .inner {
@@ -19,7 +17,7 @@
     flex-direction: column;
     gap: calc(.5 * var(--component-gap));
 
-    font-family: 'Poiret One', sans-serif;
+    font-family: var(--heading-font);
     line-height: 1.2;
     text-align: center;
     margin-bottom: calc(1.5 * var(--component-gap));
@@ -31,6 +29,10 @@
 
 .header h2 {
     font-size: 1.625rem;
+}
+
+.dimmed-text {
+    color: var(--secondary-color-dim);
 }
 
 .image-list {

@@ -1,0 +1,11 @@
+:root {
+    --heading-font: 'Poiret One', sans-serif;
+    --text-font: 'Alegreya Sans', sans-serif;
+
+    --background-color: black;
+    --text-color: white;
+    --secondary-color: #B39800;
+    --secondary-color-dim: #756300;
+
+    --component-gap: 1.5rem;
+}

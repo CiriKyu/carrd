@@ -1,6 +1,6 @@
 .image-box {
     display: block;
-    background: black;
+    background: var(--background-color);
 }
 
 .image-main video {
@@ -14,14 +14,14 @@
     display: block;
     width: 100%;
     text-align: right;
-    color: #756300;
+    color: var(--secondary-color-dim);
 
     transition: color .5s;
 }
 
 .image-credit:hover,
 .image-credit:focus-within {
-    color: #B39800;
+    color: var(--secondary-color);
 }
 
 .image-credit a {

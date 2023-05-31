@@ -39,7 +39,7 @@ const IndexPage: FC<PageProps> = () => {
       <main className='page'>
         <div className='inner'>
           <div className='header'>
-            <h1>Cirina Q(ualli)'tea</h1>
+            <h1>Cirina Q<span className='dimmed-text'>(ualli)</span>'tea</h1>
             <h2>~ Steppe Warrior ~</h2>
           </div>
 
