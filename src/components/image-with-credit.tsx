@@ -8,27 +8,36 @@ interface Props {
   loading: 'eager' | 'lazy'
 }
 
+interface VideoType {
+  av1: Queries.VideoFFMPEGTranscoded
+  vp9: Queries.VideoFFMPEGTranscoded
+  h264: Queries.VideoFFMPEGTranscoded
+}
+
 const ImageWithCredit: FC<Props> = ({ data, loading }) => {
   const altText = `Artwork by ${data.artistName as string ?? 'ERROR'}`
   const path = data.file?.publicURL as string ?? 'ERROR'
 
   let artworkComp
-  if (path.endsWith('.gif')) {
-    artworkComp = (
-      <img src={path} alt={altText} loading={loading} />
-    )
-  } else if (path.endsWith('.mp4')) {
-    // specify size of the video so the poster gets stretched to "max-width"
-    // if we ever have different video resolutions we should read this from the query
-    artworkComp = (
-      <video controls muted preload='none' poster={data.poster?.publicURL} width='1920' height='1080'>
-        <source src={path} type='video/mp4' />
-      </video>
-    )
-  } else {
+  if (data.file?.childImageSharp != null) {
     const image: IGatsbyImageData = getImage(data.file)
     artworkComp = (
       <GatsbyImage image={image} loading={loading} alt={altText} />
+    )
+  } else if (data.file?.childVideoFfmpeg != null) {
+    const video: VideoType = data.file.childVideoFfmpeg
+    // specify size of the video so the poster gets stretched to "max-width"
+    // AV1 needs a specific codec param (0=Main profile, 08=Level 4.0, M=seq_tier 0, 08=bit depth 8) - this should probably be automated but tbh does it matter if it's slightly off…
+    artworkComp = (
+      <video controls muted preload='none' poster={data.poster?.publicURL} width={video.h264.width} height={video.h264.height}>
+        <source src={video.av1.src} type='video/webm; codecs=av01.0.08M.08' />
+        <source src={video.vp9.src} type='video/webm; codecs=vp9' />
+        <source src={video.h264.src} type='video/mp4; codecs=avc1' />
+      </video>
+    )
+  } else {
+    artworkComp = (
+      <img src={path} alt={altText} loading={loading} />
     )
   }
 

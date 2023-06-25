@@ -7,10 +7,12 @@ import './index.css'
 
 const IndexPage: FC<PageProps> = () => {
   const query: Queries.Query = useStaticQuery(graphql`
-    query {
+   query {
       allCommissionsYaml {
         nodes {
           id
+          artistName
+          artistUrl
           file {
             publicURL
             childImageSharp {
@@ -23,9 +25,27 @@ const IndexPage: FC<PageProps> = () => {
                 outputPixelDensities: [0.25, 0.5, 0.7, 1, 2]
               )
             }
+            childVideoFfmpeg {
+              # using default crf
+              av1: transcode(codec: "libsvtav1", maxWidth: 1280, maxHeight: 720, fileExtension: "webm", outputOptions: ["-crf 35", "-b:v 0"]) {
+                src
+                width
+                height
+              }
+              # crf according to https://developers.google.com/media/vp9/settings/vod
+              vp9: transcode(codec: "libvpx-vp9", maxWidth: 1280, maxHeight: 720, fileExtension: "webm", outputOptions: ["-crf 32", "-b:v 0"]) {
+                src
+                width
+                height
+              }
+              # using default crf
+              h264: transcode(codec: "libx264", maxWidth: 1280, maxHeight: 720, fileExtension: "mp4", outputOptions: ["-movflags +faststart", "-crf 23"]) {
+                src
+                width
+                height
+              }
+            }
           }
-          artistName
-          artistUrl
           poster {
             publicURL
           }
